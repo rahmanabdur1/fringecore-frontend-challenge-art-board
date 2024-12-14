@@ -1,4 +1,3 @@
-/* Reset default margins and padding */
 * {
   margin: 0;
   padding: 0;
@@ -8,15 +7,24 @@
 /* Body background and font */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0; /* Light gray background */
+  background-color: #f0f0f0; 
+  height: 100vh; 
+  overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 /* Main container */
 .App {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Toolbar for buttons */
@@ -25,9 +33,11 @@ body {
   top: 10px;
   right: 10px;
   display: flex;
-  gap: 4px;
+  gap: 8px;
+  z-index: 10;
 }
 
+/* Button styling */
 button {
   padding: 10px 15px;
   cursor: pointer;
@@ -36,22 +46,55 @@ button {
   color: black;
   border: 1px solid black;
   border-radius: 4px;
-  /* transition: background-color 0.3s, color 0.3s, border-color 0.3s; */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-button:hover {
-  background-color: #f0f0f0;
-  color: black;
-}
 
 button:focus {
   outline: none;
 }
 
-/* Canvas */
+.selected {
+  background-color: #d6d0d0;
+  color: black;
+}
+
+
 canvas {
   border: 1px solid #ccc;
-  display: block;
-  margin: auto;
   background-color: #fff;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  touch-action: none; 
+}
+
+
+@media (max-width: 768px) {
+  .toolbar {
+    top: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar {
+    top: 20px;
+    right: 20px;
+    gap: 12px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
 }
